@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10172a">
+  <title>Study Buddy AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Study Buddy AI home">
+        <span class="brand-mark">✦</span><span>study buddy<span class="brand-ai">.ai</span></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <button class="nav-item active" data-view="tutor"><span>✧</span> AI Study Tutor</button>
+      <button class="nav-item" data-view="notes"><span>▤</span> Note Summarizer</button>
+      <button class="nav-item" data-view="quiz"><span>◇</span> Quiz Maker</button>
+      <button class="nav-item" data-view="tasks"><span>✓</span> Homework Tracker</button>
+      <div class="sidebar-bottom">
+        <div class="buddy-card">
+          <div class="buddy-icon">✦</div>
+          <strong>Your study sidekick</strong>
+          <p>Learn it, don't just memorize it.</p>
+        </div>
+        <div class="privacy-note"><span class="status-dot"></span> Your API key stays on the server</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">✦</span> study buddy<span class="brand-ai">.ai</span></div>
+        <div class="topbar-right"><span class="live-dot"></span><span>Study smarter today</span><div class="avatar">SB</div></div>
+      </header>
+
+      <section class="welcome">
+        <div class="eyebrow"><span class="sparkle">✦</span> YOUR PERSONAL STUDY SPACE</div>
+        <h1>Big goals. <span>Small steps.</span></h1>
+        <p class="welcome-copy">What are we figuring out today?</p>
+      </section>
+
+      <section class="view active" id="view-tutor">
+        <div class="tool-heading"><div><div class="eyebrow">01 / UNDERSTAND</div><h2>AI Study Tutor</h2><p>Ask a question and get a clear, step-by-step explanation.</p></div><div class="tool-symbol">✧</div></div>
+        <div class="panel">
+          <label for="tutor-question">What are you working on?</label>
+          <textarea id="tutor-question" rows="5" placeholder="e.g. Explain how to solve 2x + 7 = 19, step by step..."></textarea>
+          <div class="form-row"><select id="tutor-subject" aria-label="Subject"><option>General</option><option>Math</option><option>Science</option><option>English</option><option>History</option><option>Spanish</option><option>Computer science</option></select><button class="primary" id="tutor-submit">Explain it <span>↗</span></button></div>
+          <div class="result hidden" id="tutor-result" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-notes">
+        <div class="tool-heading"><div><div class="eyebrow">02 / SIMPLIFY</div><h2>Note Summarizer</h2><p>Turn class notes into something easier to review.</p></div><div class="tool-symbol">▤</div></div>
+        <div class="panel">
+          <label for="notes-input">Paste your notes</label>
+          <textarea id="notes-input" rows="8" placeholder="Paste your class notes, textbook excerpt, or study guide here..."></textarea>
+          <div class="form-row"><select id="summary-style" aria-label="Summary style"><option value="bullet points">Quick bullet points</option><option value="simple explanation">Simple explanation</option><option value="key terms and definitions">Key terms & definitions</option></select><button class="primary" id="notes-submit">Summarize <span>↗</span></button></div>
+          <div class="result hidden" id="notes-result" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-quiz">
+        <div class="tool-heading"><div><div class="eyebrow">03 / PRACTICE</div><h2>Quiz Maker</h2><p>Make practice questions from the material you're learning.</p></div><div class="tool-symbol">◇</div></div>
+        <div class="panel">
+          <label for="quiz-input">What should the quiz cover?</label>
+          <textarea id="quiz-input" rows="7" placeholder="Paste notes or enter a topic, like the causes of the American Revolution..."></textarea>
+          <div class="form-row"><select id="quiz-count" aria-label="Number of questions"><option value="5">5 questions</option><option value="8">8 questions</option><option value="10">10 questions</option></select><select id="quiz-level" aria-label="Difficulty"><option>Easy</option><option selected>Medium</option><option>Challenging</option></select><button class="primary" id="quiz-submit">Build my quiz <span>↗</span></button></div>
+          <div class="result hidden" id="quiz-result" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-tasks">
+        <div class="tool-heading"><div><div class="eyebrow">04 / STAY ON TRACK</div><h2>Homework Tracker</h2><p>Keep your assignments in one place. Your list saves in this browser.</p></div><div class="tool-symbol">✓</div></div>
+        <div class="panel">
+          <form id="task-form" class="task-form"><label class="sr-only" for="task-name">Assignment name</label><input id="task-name" maxlength="140" placeholder="Add an assignment..." required><select id="task-subject" aria-label="Assignment subject"><option>General</option><option>Math</option><option>Science</option><option>English</option><option>History</option><option>Spanish</option><option>Other</option></select><button class="primary" type="submit">Add task +</button></form>
+          <div class="task-stats"><span id="task-count">0 assignments</span><button class="text-button" id="clear-completed">Clear completed</button></div>
+          <div id="task-list" class="task-list"></div>
+        </div>
+      </section>
+
+      <footer><span>✦ Made for curious minds.</span><span>AI can make mistakes — double-check important answers.</span></footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
